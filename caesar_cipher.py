@@ -1,12 +1,11 @@
 # Caesar Cipher
-
 import pyperclip
 
 
-message = "This is my hidden message"
-key = 13
+message = input("Enter your message: ").strip()
+key = int(input("Enter your key: "))
+mode = int(input("Enter 1 to encrypt, 2 to decrypt: "))
 
-mode = "decrypt"
 
 symbols = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890 !?"
 
@@ -17,10 +16,10 @@ for symbol in message:
         symbolIndex = symbols.find(symbol)
 
         #this will perform encryption or decryption
-        if mode == "encrypt":
+        if mode == 1:
             translatedIndex = symbolIndex + key
-        elif mode == "decrypt":
-            translatedIndex = symbolIndex + key
+        elif mode == 2:
+            translatedIndex = symbolIndex - key
 
         #this will handle if it's wraparound
         if translatedIndex >= len(symbols):
